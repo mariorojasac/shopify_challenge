@@ -2,15 +2,23 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import loader from "./IMG_0429.GIF";
+import TextareaAutosize from "@mui/material/TextareaAutosize";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import { CardActionArea } from "@mui/material";
+
+
+
 
 const Main = () => {
   //  Setting State
   const [textInput, setTextInput] = useState();
-  console.log("this is the textinput state = " + textInput);
   const [responses, setResponses] = useState([]);
-  console.log("this is the response state = " + responses);
   const [isLoading, setLoading] = useState(false);
 
+  //Saving item to local storage
   useEffect(() => {
     const json = JSON.stringify(responses);
     localStorage.setItem("responses", json);
@@ -20,6 +28,7 @@ const Main = () => {
   const handleChange = (e) => {
     setTextInput(e.target.value);
   };
+
   const handleSubmit = (e) => {
     setLoading((prevState) => !prevState);
     e.preventDefault();
@@ -57,15 +66,20 @@ const Main = () => {
   return (
     <div>
       <div>
-        <h2>Fun with AI</h2>
+        <h2>Fun with OpenAI</h2>
         <form onSubmit={handleSubmit}>
           <label>Enter Prompt</label> <br />
-          <textarea
+          <TextareaAutosize
+            maxRows={5}
+            aria-label="maximum height"
+            placeholder="Type Prompt Here ... i.e) Create a poem about Pizza!"
+            defaultValue=""
             onChange={handleChange}
             type="text"
             value={textInput}
             name="textInput"
-            placeholder="Type Prompt Here ... i.e) Create a poem about Pizza!"
+            required
+            style={{ width: 300 }}
           />
           <br />
           <Button
@@ -81,15 +95,31 @@ const Main = () => {
       <div style={{ height: "100px" }}>
         {isLoading ? <img src={loader} alt="" width="100" /> : ""}
       </div>
-      <div style={{ backgroundColor: "#FBF6EC" }}>
-        <h1>Responses</h1>
-        <ul>
+      <div style={{
+        backgroundColor: "#FBF6EC",
+        height: "55vh",
+      }}>
+        <h3>Responses</h3>
+
+        <ul style={{
+        backgroundColor: "#FBF6EC",
+      }}>
           {responses.map((resObj, index) => (
-            <li key={index}>
-              <p>{resObj.prompt}</p>
-              <br />
-              <p>{resObj.response}</p>
-            </li>
+            <Card sx={{
+              maxWidth: 345, 
+              margin: "10px",
+            }} key={index}>
+              <CardActionArea>
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    Prompt: {resObj.prompt}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Response: {resObj.response}
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+            </Card>
           ))}
         </ul>
       </div>
