@@ -8,9 +8,6 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 
-
-
-
 const Main = () => {
   //  Setting State
   const [textInput, setTextInput] = useState();
@@ -67,7 +64,7 @@ const Main = () => {
       <div>
         <h2>Fun with OpenAI</h2>
         <form onSubmit={handleSubmit}>
-          <label>Enter Prompt</label> <br />
+          <p>Enter Prompt</p> <br />
           <TextareaAutosize
             maxRows={5}
             aria-label="maximum height"
@@ -94,20 +91,28 @@ const Main = () => {
       <div style={{ height: "100px" }}>
         {isLoading ? <img src={loader} alt="" width="100" /> : ""}
       </div>
-      <div style={{
-        backgroundColor: "#FBF6EC",
-        height: "55vh",
-      }}>
-        <h3>Responses</h3>
-
-        <ul style={{
-        backgroundColor: "#FBF6EC",
-      }}>
+      <h3>Responses</h3>
+      <div
+        style={{
+          backgroundColor: "#FBF6EC",
+          height: "55vh",
+          overflow: "scroll",
+          marginBottom: "6vh",
+        }}
+      >
+        <ul
+          style={{
+            backgroundColor: "#FBF6EC",
+          }}
+        >
           {responses.map((resObj, index) => (
-            <Card sx={{
-              maxWidth: "90%", 
-              margin: "10px",
-            }} key={index}>
+            <Card
+              sx={{
+                maxWidth: "90%",
+                margin: "10px",
+              }}
+              key={index}
+            >
               <CardActionArea>
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
