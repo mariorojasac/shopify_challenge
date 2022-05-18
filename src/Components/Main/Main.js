@@ -5,7 +5,6 @@ import loader from "./IMG_0429.GIF";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 
@@ -52,7 +51,7 @@ const Main = () => {
     };
 
     try {
-      const res = axios.post(api, data, config).then((res) => {
+      axios.post(api, data, config).then((res) => {
         let response = res.data.choices[0].text;
         let prompt = textInput;
         setLoading((prevState) => !prevState);

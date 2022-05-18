@@ -1,4 +1,3 @@
-import shopifyLogo from "./shopifylogo.jpeg";
 import "./Header.css";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -13,7 +12,7 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { createTheme } from "@mui/material/styles";
 
 
