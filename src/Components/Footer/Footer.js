@@ -3,7 +3,6 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import AdbIcon from "@mui/icons-material/Adb";
 import { createTheme } from "@mui/material/styles";
 
 const theme = createTheme({
@@ -24,7 +23,6 @@ const theme = createTheme({
 });
 
 const Footer = () => {
- 
   return (
     <AppBar
       position="fixed"
@@ -36,9 +34,8 @@ const Footer = () => {
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "flex", md: "flex" }, mr: 1 }} />
           <Typography
-            variant="h5"
+            variant=""
             noWrap
             component="a"
             href=""
@@ -50,16 +47,12 @@ const Footer = () => {
               textDecoration: "none",
             }}
           >
-            <div>
-              &copy; {new Date().getFullYear()} Copyright{" "}
-              <p> Powered by OpenAI and designed by Mario Rojas</p>
-            </div>
+            &copy; {new Date().getFullYear()} Copyright Powered by OpenAI and
+            designed by Mario Rojas
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            <div>
-              &copy; {new Date().getFullYear()} Copyright{" "}
-              <p> Powered by OpenAI and designed by Mario Rojas</p>
-            </div>
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" }, alignItems: "center"}}>
+            &copy; {new Date().getFullYear()}  Copyright Powered by OpenAI and
+            designed by Mario Rojas
           </Box>
         </Toolbar>
       </Container>

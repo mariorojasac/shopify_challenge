@@ -78,7 +78,7 @@ const Main = () => {
             value={textInput}
             name="textInput"
             required
-            style={{ width: 300 }}
+            style={{ width: 300, height: 200 }}
           />
           <br />
           <Button
@@ -105,7 +105,7 @@ const Main = () => {
       }}>
           {responses.map((resObj, index) => (
             <Card sx={{
-              maxWidth: 345, 
+              maxWidth: "90%", 
               margin: "10px",
             }} key={index}>
               <CardActionArea>
